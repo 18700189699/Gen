@@ -1,0 +1,28 @@
+package com.uxsino.Netty.yeyunxuan;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
+/**
+ * WebSocket客户端监听器
+ * <p>
+ * create by 叶云轩 at 2018/5/21-下午1:38
+ * contact by tdg_yyx@foxmail.com
+ */
+@Component
+@Order(1)
+public class WebSocketClientListener implements CommandLineRunner {
+	@Resource
+	private WebSocketConfig webSocketConfig;
+
+	@Resource
+	private WebSocketClient webSocketClient;
+
+	@Override
+	public void run(String... args) throws Exception {
+		webSocketClient.run(webSocketConfig.getHost(), webSocketConfig.getPort());
+	}
+}
